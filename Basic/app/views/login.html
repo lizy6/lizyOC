@@ -1,0 +1,35 @@
+<div class="loginPage" id="login">
+  <div class="title">
+    <img class="pic" src="../images/blueLog.png" alt=""  ng-click="homeIndex()">
+    <!--<span class="titleText">已有账号?<span class="titleLogin">请登录</span></span>-->
+  </div>
+  <div class="content">
+    <div class="contentModel">
+      <p class="conTitle">登录Aura账号</p>
+      <form class="main_form" name="frm">
+        <div class="conCont">
+          <p class="error_tit" ng-if="error_name">用户名或者密码有误，请重新输入。</p>
+          <div class="conOne">
+            <label>{{username | translate}}</label>
+            <span class="textRgt" ng-if="frm.username.$dirty && frm.username.$invalid">用户名不能为空</span><br/>
+            <input class="ipt"  name="username" autocomplete="off" type="text" ng-model="usermessage.username" tabindex="1" required>
+          </div>
+          <div class="conTwo">
+            <label>{{password | translate}}</label>
+            <span class="textRgt" ng-if="frm.password.$dirty && frm.password.$invalid">密码不能为空</span><br/>
+            <input class="ipt" name="password" type="password" autocomplete="off" ng-model="usermessage.password" tabindex="2" ng-keydown="enterLogin($event)" required>
+          </div>
+
+          <div class="login_forget"  ng-class="{'active': isForget}" ng-click="isForget=!isForget">
+            <i class="ta-cd no-me"></i><p>记住用户名</p>
+          </div>
+
+          <button class="btn" ng-click="frm.$valid && login()">{{signin| translate}}</button>
+          <p class="footer">
+            <span class="titleText">没有账号?<span class="titleLogin"  ng-click="register()" >立即注册</span></span>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

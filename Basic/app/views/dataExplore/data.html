@@ -1,0 +1,46 @@
+
+<div class="dataExploreModel">
+  <div class="exploreModelLeft">
+    <ul>
+      <li ng-class="{'active' : tab == 0}" style="padding: 0px">
+        <div class="circle" style="top: 30%;"></div>
+        <div class="text">{{ 'web_common_data_explore_001' | translate}}</div>
+      </li>
+      <li ng-class="{'active' : tab == 1}">
+        <div class="circle" style="top: 70%;"></div>
+        <div class="text">{{ 'web_common_data_explore_002' | translate}}</div>
+      </li>
+      <li ng-class="{'active' : tab == 2}">
+        <div class="circle" style="top: 70%;"></div>
+        <div class="text">{{ 'web_common_data_explore_003' | translate}}</div>
+      </li>
+    </ul>
+  </div>
+  <div class="exploreModelRight">
+    <div ng-show='tab == 0' class="dataSource">
+      <div ng-controller="DataSourceCtrl" class="dataSourcePart">
+        <div source class="sourcePart"></div>
+      </div>
+      <div class="button">
+        <button class="btn btn-default btn-sm bBtn" id="firstNext" ng-click="clicked(1)" ng-disabled="!unableNext">{{'web_common_009' | translate}}</button>
+      </div>
+    </div>
+    <div ng-show='tab == 1' class="dataReport">
+      <div ng-controller="DataReportCtrl">
+        <div report class="reportPart"></div>
+      </div>
+      <div class="button" style="clear: both;margin-left: 30px;padding-top: 30px;">
+        <button class="btn btn-default btn-sm bBtnNext" ng-click="clicked(0)">{{'web_common_016' | translate}}</button>
+        <button type="button" class="btn btn-default btn-sm bBtn" id='secondNext' ng-click="clicked(2)" ng-disabled="!unableNext">{{'web_common_009' | translate}}</button>
+      </div>
+    </div>
+    <div ng-show='tab == 2' class="dataProcess">
+      <div ng-controller="DataProcessingCtrl">
+        <div processing class="processPart"></div>
+      </div>
+      <div class="button">
+        <button type="button" class="btn btn-default btn-sm bBtnNext" ng-click=clicked(1) ng-disabled="!unableNext">{{'web_common_016' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>

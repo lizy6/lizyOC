@@ -1,0 +1,92 @@
+<div style="padding:0 30px;" ng-click="handleGlobalClick()">
+  <div class="row" id="fixTitle">
+    <div class="expertPage">
+      <div class="contentPart">
+        <div class="header-button-group" ng-click="runCell();$event.stopPropagation();">
+          <div class="header-pic"><img class="titleRunCell" data-toggle="dropdown" aria-haspopup="true "
+                                       aria-expanded="true"></div>
+        </div>
+        <div class="header-button-group">
+          <div class="header-pic"><img ng-click="runAll();$event.stopPropagation();" class="titleRunAll" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="true"></div>
+        </div>
+        <select ng-model="selectStyle" ng-click="$event.stopPropagation();" ng-options="a for a in codeStyle" style="float: left;width: 100px;height: 30px;margin-top: 10px;margin-right: 10px;"></select>
+        <div class="header-button-group ">
+          <div class="dropdown " style="float: left;">
+            <button class="btn btn-default dropdown-toggle " type="button " id="dropdownMenu1 " data-toggle="dropdown "
+                    aria-haspopup="true " aria-expanded="true " ng-click="saveAll();$event.stopPropagation();">
+              {{"web_common_018"|translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="border: solid 1px #f0f0f0;">
+    <div class="expertPageContent">
+      <div class="title">Notebook</div>
+      <div class="ipynb-edit cell " ng-repeat="cell in model.sourceCells track by $index ">
+        <div class="row content">
+          <div class="col-xs-1 ipynb-left">
+            <!--<div ng-show="cell.cell_type==='code' && cell.outputs!==null ">-->
+            <div ng-show="cell.isShow && cell.cell_type!='markdown'">
+              <button class="runBtn" ng-click="run($index);$event.stopPropagation();"></button>
+            </div>
+            <span ng-show="!cell.isShow && cell.cell_type ==='code'" style="font-size: large "
+                  class="pull-right ">In [{{cell.execution_count || ''}}]:</span>
+            <!--<span style="font-size: large " class="pull-right " ng-show="cell.outputs[0].output_type==='execute_result' ">In [{{cell.execution_count}}]:</span>-->
+          </div>
+          <div class="col-lg-11 col-md-11 col-xs-11 ipynb-right" ng-click="openToolTip($index);$event.stopPropagation();">
+            <textarea id="code" name="code" class="changeStyle" ui-codemirror="cmOption " ng-model="cell.code">
+            {{cell.code}}
+          </textarea>
+            <div ng-repeat="output in cell.outputs track by $index " ng-model="cell.outputs" class="outPutCell">
+              <div ng-show="output.output_type==='display_data'" class="output">
+                <img src="{{ 'data:image/png;base64,'+output.data[ 'image/png']}} ">
+              </div>
+              <div ng-show="output.output_type==='stream'" class="output">
+                <pre>{{output.text}}</pre>
+              </div>
+              <div ng-show="output.output_type==='execute_result' && output.data[ 'text/html']!==undefined "
+                   class="output">
+                <div ng-bind-html="output.data[ 'text/html'] "></div>
+              </div>
+              <div ng-show="output.output_type==='execute_result' && !(output.data[ 'text/html']!==undefined)"
+                   class="output">
+                {{output.data['text/plain']}}
+              </div>
+              <div ng-show="output.output_type==='error'" class="output error">
+                <!--{{output.traceback}}-->
+                <span style="color: red;">{{output.ename}}</span>
+                <span style="color: #333;">{{output.evalue}}</span>
+              </div>
+            </div>
+            <div class="tool-tip " ng-show="cell.isShow ">
+              <button class="upAddBtn" ng-click="upAdd($index,item);$event.stopPropagation();"></button>
+              <button class="downAddBtn" ng-click="downAdd($index,item);$event.stopPropagation();"></button>
+              <button class="deleteRedBtn" ng-click="codeMirrorDelete($index,item);$event.stopPropagation();"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.onscroll = function () {
+    let topScroll = document.body.scrollTop;
+    let bignav = document.getElementById('fixTitle');
+    if (topScroll > 50) {
+      bignav.style.position = 'fixed';
+      bignav.style.top = '0';
+      bignav.style.marginTop = '0';
+      bignav.style.zIndex = '10';
+      bignav.style.width = '1403px';
+      bignav.style.background = '#fff';
+    } else {
+      bignav.style.position = 'static';
+    }
+  };
+
+</script>

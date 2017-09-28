@@ -1,0 +1,44 @@
+<div class="title">{{appName}}</div>
+<div>
+  <div class="dataExplore-container">
+    <uib-tabset class="tab-default tab-jia-default" active="grid.active" style="border:0px;">
+      <uib-tab ng-repeat="itemType in projectType track by $index" index="$index">
+        <uib-tab-heading>
+         <p class="oper_tit">{{itemType.SCHEDULE_NAME}}</p>
+        </uib-tab-heading>
+        <div>
+          <table class="table table_jia_set">
+            <tr class="title">
+              <td>状态</td>
+              <td>时间</td>
+              <td class="table_set_last">结果</td>
+            </tr>
+            <tr class="content" class="table table_jia_set"
+                ng-repeat="item in projectType[$index].resList">
+              <td>{{item.EXECUTE_STATUS}}</td>
+              <td>{{item.EXECUTE_TIME}}</td>
+              <td class="con_set_last" ng-click="view(item)">查看</td>
+            </tr>
+          </table>
+        </div>
+
+        <!--<div class="page-style" style="float: right">-->
+          <!--<div uib-pagination-->
+               <!--ng-model="grid.page"-->
+               <!--total-items="grid.total"-->
+               <!--items-per-page="grid.size"-->
+               <!--class="pagination-sm"-->
+               <!--boundary-links="false"-->
+               <!--max-size="12"-->
+               <!--rotate="true"-->
+               <!--previous-text="上一页"-->
+               <!--next-text="下一页"-->
+               <!--first-text="首页"-->
+               <!--last-text="末页">-->
+          <!--</div>-->
+        <!--</div>-->
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+

@@ -1,0 +1,40 @@
+<div style="padding: 0 30px">
+  <div class="dataExplore-header">
+    <span class="dataExplore-header-left">{{'web_common_001'| translate}} <i ng-click="newApp()"
+                                                                             class="addBgPic"></i></span>
+    <span class="dataExplore-header-right">
+        <img src="./images/search.png" alt="">
+        <input type="text" placeholder="{{'web_common_data_app_01'| translate}}">
+      </span>
+  </div>
+  <div class="dataExplore-container">
+    <uib-tabset class="tab-default" active="grid.active">
+      <uib-tab ng-repeat="(indexType, item) in projectType track by indexType" index="$index">
+        <uib-tab-heading>
+          <p class="oper_tit">{{ item | translate}}</p>
+          <span class="icon">{{(!listAllApp[$index]) ? "0" : listAllApp[$index].length}}</span>
+        </uib-tab-heading>
+        <div class="dataExplore-container-main" ng-repeat="item in listAllApp[$index]"
+             ui-sref="appInfo({mode: item.mode, name: item.APP_NAME})"
+             ng-click="unfoldPath($parent.item,listAllApp[$parent.$index][$index])">
+          <div class="date_set_main">
+            <div class="main_header_data">{{item.APP_NAME}}
+              <span class="deleteImg">
+                <img ng-click="delete(item)" src="../../images/delete.png"/>
+              </span>
+              <span class="deleteImg">
+                <img ng-click="copy(item)" src="../../images/copy.png"/>
+              </span>
+            </div>
+            <div class="main_container_data">
+              <span ng-if="item.APP_NAME == '医保控费'">AI数据驱动方式则先对现有数据进行梳理和清洗，利用各种适当的统计计算方法， 大量广泛地提取和预测目标相关的特征信息后，系统性的分析、筛选特征，并将其输入至机器学习算法中进行训练。在训练过程中，根据测试效果好坏进行调参，使模型在测试集上达到最优。</span>
+              <!--<div class="contentone" ng-repeat="(key, contentitem) in item.content">{{key}} : {{contentitem}}</div>-->
+            </div>
+            <div class="main_footer_data">{{item.COMMENT}}</div>
+          </div>
+        </div>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>
+

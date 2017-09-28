@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <span class="modal-header-title">{{'web_common_expertPart_layer_01'| translate}}</span>
+  <span class="modal-header-close closeModelBtn" ng-click="cancel()"></span>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-3 control-label">{{'web_common_expertPart_layer_02'| translate}} </label>
+      <div class="col-sm-9">
+        <input class="form-control" ng-model="model.name" placeholder="{{'web_common_expertPart_layer_04'| translate}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">{{'web_common_expertPart_layer_03'| translate}} </label>
+      <div class="col-sm-9">
+        <select class="form-control" ng-model="selectKernel" ng-options="a for a in kernels"></select>
+      </div>
+    </div>
+  </form>
+  <div class="modal-body-warning">{{model.nameTip}}</div>
+</div>
+<div class="modal-footer">
+  <button class="modal-footer-btn"
+          ng-click="create()"
+    ng-disabled="!(model.name !== undefined && model.name !== null)">
+    {{'web_common_015'| translate}}
+  </button>
+</div>
+
+
+

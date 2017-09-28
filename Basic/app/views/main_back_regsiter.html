@@ -1,0 +1,107 @@
+<div id="pagOne">
+  <div class="title">
+  <span class="rt loginBtn1">
+   <a class="loginBtn1a" ng-click="change()">登录</a>
+  </span>
+  </div>
+  <div class="homepag_nav">
+  <span class="lf">
+    <img class="homepag_navimg" src="images/logo.png">
+  </span>
+    <ul>
+      <li class="rt homepag_navli "><a class="homepag_navlia" href="#">Aura解决方案</a></li>
+      <li class="rt homepag_navli"><a class="homepag_navlia" href="#">Aura产品</a></li>
+      <li class="rt homepag_navli"><a class="homepag_navlia" href="#">什么是Aura</a></li>
+    </ul>
+  </div>
+  <!--content-->
+  <div class="homepag_content">
+    <h1 class="homepag_contenth1">普惠智能 极速洞见</h1>
+    <h3 class="homepag_contenth3">When AI meets data</h3>
+  </div>
+</div>
+<div class="loginPage" id="login" style="display: none;">
+  <div class="title">
+    <img class="pic" src="../images/blueLog.png" alt="">
+    <!--<span class="titleText">已有账号?<span class="titleLogin">请登录</span></span>-->
+  </div>
+  <div class="content">
+    <div class="contentModel">
+      <p class="conTitle">登录Aura账号</p>
+      <form class="main_form" name="frm">
+      <div class="conCont">
+        <div class="conOne">
+          <label>{{username | translate}}</label>
+          <span class="textRgt" ng-if="frm.username.$dirty && frm.username.$invalid">用户名不能为空</span><br/>
+          <input class="ipt"  name="username" autocomplete="off" type="text" ng-model="usermessage.username" tabindex="1" required>
+        </div>
+        <div class="conTwo">
+          <label>{{password | translate}}</label>
+          <span class="textRgt" ng-if="frm.password.$dirty && frm.password.$invalid">密码不能为空</span><br/>
+          <input class="ipt" name="password" type="password" autocomplete="off" ng-model="usermessage.password" tabindex="2" ng-keydown="enterLogin($event)" required>
+        </div>
+        <!--<p class="textConfirm">-->
+          <!--<input type="checkbox" ng-click="saveCookie()">记住我-->
+        <!--</p>-->
+        <div class="mgt rem-me">
+          <span ng-if="!me" class="ta-cd no-me " ng-click="mark(2)"></span>
+          <span ng-if="me" class="ta-cd yes-me" ng-click="mark(1)"></span>
+          记住用户名
+        </div>
+
+        <button class="btn" ng-click="frm.$valid && login()">{{signin| translate}}</button>
+        <p class="footer">
+          <span class="titleText">没有账号?<span class="titleLogin"  ng-click="register()" >立即注册</span></span>
+        </p>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="loginPage" id="register" style="display: none;">
+  <div class="title">
+    <img class="pic" src="../images/blueLog.png" alt="">
+    <span class="titleText">已有账号?<span class="titleLogin" ng-click="logintwo()">请登录</span></span>
+  </div>
+  <div class="content">
+    <form class="contentModel">
+      <p class="conTitle">注册Arua账号</p >
+      <form class="main_form" name="regfrm">
+      <div class="conCont">
+        <div class="conOne">
+          <label>用户名</label>
+          <span class="textRgt" ng-if="regfrm.regusername.$dirty && regfrm.regusername.$invalid">用户名不能为空</span><br/>
+          <input class="ipt"  name="regusername" autocomplete="off" type="text" ng-model="user.name" tabindex="1" required>
+          <!--<input class="ipt" type="text"  name="username" autocomplete="off" abindex="1" required>-->
+        </div>
+        <div class="conTwo">
+          <label>邮箱</label>
+          <span class="textRgt">邮箱不能为空</span><br/>
+          <ul ng-if="regfrm.email.$dirty && regfrm.email.$invalid">
+            <li ng-if="regfrm.email.$error.email">无效的邮箱格式</li>
+            <li ng-if="regfrm.email.$error.required">此项为必填项</li>
+          </ul>
+
+          <input class="ipt" name="email" type="email" >
+        </div>
+        <div class="conTwo">
+          <label>密码</label>
+          <span class="textRgt">密码不能为空</span><br/>
+          <input class="ipt" type="text">
+        </div>
+        <div class="conTwo">
+          <label>确认密码</label>
+          <span class="textRgt">确认密码不能为空</span><br/>
+          <input class="ipt" type="text">
+        </div>
+        <p class="textConfirm">
+          <input type="checkbox">我已阅读并接受 {Aura 服务协议}
+        </p >
+        <button class="btn">注册</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

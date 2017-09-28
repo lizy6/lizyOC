@@ -1,0 +1,70 @@
+<table style="width: 100%;" class="dataApp">
+  <tr>
+    <td class="dataLeft">
+      <a href="javascript:void(0);" class="zx_set_btn"></a>
+
+      <ul class="dataStepUl">
+
+        <li class="dataStepLi" ng-class="{'active' : tab == 0}" ng-click="clicked(0)">
+          <span class="icon25 icon25_yywj"></span>
+          <span class="side_tit">{{'web_common_data_app_05'| translate}}</span>
+          <p class="num_detail">{{'web_common_data_app_05'| translate}}</p>
+        </li>
+
+
+        <li class="dataStepLi" ng-class="{'active' : tab == 1}" ng-click="clicked(1)">
+          <span class="icon25 icon25_rwjh"></span>
+          <span class="side_tit">{{'web_common_data_app_06'| translate}}</span>
+          <p class="num_detail">{{'web_common_data_app_06'| translate}}</p>
+        </li>
+
+
+        <li class="dataStepLi" ng-class="{'active' : tab == 2}" ng-click="clicked(2)">
+          <span class="icon25 icon25_yybp"></span>
+          <span class="side_tit">{{'web_common_data_app_07'| translate}}</span>
+          <p class="num_detail">{{'web_common_data_app_07'| translate}}</p>
+        </li>
+
+        <li class="dataStepLi" ng-class="{'active' : tab == 3}" ng-click="clicked(3)">
+          <span class="icon25 icon25_yyjg"></span>
+          <span class="side_tit">{{'web_common_data_app_08'| translate}}</span>
+          <p class="num_detail">{{'web_common_data_app_08'| translate}}</p>
+        </li>
+        <li class="dataStepLi" ng-class="{'active' : tab == 4}" ng-click="clicked(4)">
+          <span class="icon25 icon25_yygl"></span>
+          <span class="side_tit">{{'web_common_data_app_09'| translate}}</span>
+          <p class="num_detail">{{'web_common_data_app_09'| translate}}</p>
+        </li>
+      </ul>
+    </td>
+    <td class="dataRight">
+      <div ng-show='tab == 0' class="fileContent">
+        <div ng-controller="AppFileCtrl" class="filePart">
+          <div file class="file"></div>
+        </div>
+      </div>
+      <div ng-show='tab == 1' class="taskPlanContent">
+        <div ng-controller="TaskPlanCtrl" class="taskPlanPart">
+          <div task class="task"></div>
+        </div>
+      </div>
+      <div ng-show='tab == 2' class="choreographyContent">
+        <div ng-controller="ChoreographyCtrl" class="choreographyPart">
+          <div choreography class="choreography"></div>
+        </div>
+      </div>
+      <div ng-show='tab == 3' class="resultContent">
+        <div ng-controller="ResultCtrl" class="resultPart">
+          <div result class="result"></div>
+        </div>
+      </div>
+      <div ng-show='tab == 4' class="previewContent">
+        <div ng-controller="PreviewCtrl" class="previewPart">
+          <div preview class="preview"></div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+

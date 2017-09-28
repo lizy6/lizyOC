@@ -1,0 +1,76 @@
+<p class="title">{{ 'web_common_data_explore_004' | translate}}</p>
+<div class="dataProcess-stepOne commonStyle" id="divCorr" style="display: block">
+  <p class="dataProcess-one">{{ 'web_common_data_explore_009' | translate}}</p>
+  <table class="table">
+    <tr ng-repeat="item in dataHighCorr">
+      <td>相关性: {{item.corrValue}}</td>
+      <td>
+        {{item.varName}}
+        <input type="checkbox" name={{item.varName}} ng-model="dataHighCorr[$index].varNameStatus">
+      </td>
+      <td>
+        {{item.corrVarName}}
+        <input type="checkbox" name={{item.corrVarName}} ng-model="dataHighCorr[$index].corrVarNameStatus">
+      </td>
+    </tr>
+  </table>
+  <div class="btn">
+    <button class="btnStep" id="previewFirst" ng-click="apply(dataHighCorr, false, false)">{{ 'web_common_data_explore_012' | translate}}</button>
+  </div>
+</div>
+<div class="dataProcess-stepOne commonStyle" id="divImputer" style="display: none">
+  <p class="dataProcess-one">{{ 'web_common_data_explore_010' | translate}}</p>
+  <div class="step" ng-show="isShowImputer">
+    <table class="table">
+      <tr ng-repeat="item in dataImputer">
+        <td>变量名: {{item.varName}}</td>
+        <td>空值比例: {{item.imputerRatio}}</td>
+        <td>
+          <select name={{item.varName}} ng-model="dataImputer[$index].status">
+            <option value=''>不处理</option>
+            <option value='drop'>drop</option>
+            <option value='mean'>mean</option>
+            <option value='median'>median</option>
+            <option value='min'>min</option>
+            <option value='zero'>zero</option>
+            <option value='most_frequent'>most_frequent</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <div class="btn">
+      <button class="btnStep"
+            ng-click="apply(false, dataImputer, false)">{{ 'web_common_data_explore_012' | translate}}</button>
+    </div>
+  </div>
+</div>
+<div class="dataProcess-stepOne commonStyle" id="divScalar" style="display: none">
+  <p class="dataProcess-one">{{ 'web_common_data_explore_011' | translate}}</p>
+  <div class="step" ng-show="isShowScalar">
+    <table class="table">
+      <tr ng-repeat="item in dataScalar">
+        <td>变量名: {{item.varName}}</td>
+        <td>标准差: {{item.stdValue}}</td>
+        <td><img src="{{item.miniHistogram}}"></td>
+        <td>
+          <select name={{item.varName}} ng-model="dataScalar[$index].status">
+            <option value=''>不处理</option>
+            <option value='Standarded'>Standarded</option>
+            <option value='MinMax'>MinMax</option>
+            <option value='MaxAbs'>MaxAbs</option>
+            <option value='Robust'>Robust</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <div class="btn">
+      <button class="btnStep"
+            ng-click="apply(false,false,dataScalar)">{{ 'web_common_data_explore_012' | translate}}</button>
+    </div>
+  </div>
+  <div class="btn" style="margin-top: 20px;padding: 0">
+    <button class="btnStep" ng-click="preview()">{{ 'web_common_017' | translate}}</button>
+  </div>
+</div>
+
+

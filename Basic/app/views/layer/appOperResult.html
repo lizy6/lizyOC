@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <span style="float:left;">{{'web_common_data_app_08'|translate}}</span>
+  <span class="modal-header-close closeModelBtn" ng-click="cancel()"></span>
+</div>
+<div class="modal-body">
+  <div class="appResult">
+    <div class='list'>
+      <div class="body-left" ng-repeat="view in viewList" ng-model="viewList" index="$index">
+      <div class="left-content" ng-click="changeView(view)">
+        <span style="margin-right: 2px;font-weight: bold;">{{$index+1}}</span>&nbsp;{{view.name}}
+      </div>
+        <br/>
+      </div>
+    </div>
+    <div class="pic body-right" id="showArea">
+      <iframe id="ifm" width=100% height=100% frameborder=0></iframe>
+    </div>
+  </div>
+</div>

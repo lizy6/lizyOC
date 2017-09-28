@@ -1,0 +1,48 @@
+<div style="padding: 0 30px">
+  <div class="dataExplore-header">
+    <span class="dataExplore-header-left">
+      {{'web_common_data_explore_002'| translate}}
+    </span>
+    <span class="dataExplore-header-right">
+      <img src="./images/search.png" alt="">
+      <input type="text" placeholder="{{'web_common_data_explore_013'| translate}}">
+    </span>
+  </div>
+  <div class="dataExplore-container">
+    <uib-tabset class="tab-default" active="nowActive">
+      <uib-tab ng-repeat="(idx,itemType) in projectType" index="$index">
+        <uib-tab-heading>
+          <p class="oper_tit">{{ "modelType_0" + $index | translate}}</p>
+          <span class="icon">
+            {{(!listAllProject[$index]) ? "0" : listAllProject[$index].length}}
+          </span>
+          <i ng-if="$index !== 0" ng-click="newProject($index)" class="addSmPic" style="margin-top: -5px;"></i>
+        </uib-tab-heading>
+        <div class="dataExplore-container-main"
+             ng-repeat="item in listAllProject[$index]"
+             ng-click="openProject(item);$event.stopPropagation();">
+          <div class="date_set_main">
+            <div class="main_header_data">{{item.MODEL_NAME}}
+              <span class="deleteImg">
+                <img ng-click="delete(item);$event.stopPropagation();" src="../../images/delete.png"/>
+              </span>
+              <span class="deleteImg">
+                <img ng-click="copyFolderProject(item);$event.stopPropagation();" src="../../images/copy.png"/>
+              </span>
+            </div>
+            <div class="main_container_data"
+                 ng-click="unfoldPath('modelType_' + item.VIEW_MENU_ID,listAllProject[idx][$index],idx)">
+              <table style="width: 100%;">
+                <tr ng-repeat="val in item.MODEL_INFO track by $index">
+                  <td> {{ "modelType_" + item.VIEW_MENU_ID + "_0" + $index | translate }}</td>
+                  <td> {{ val }}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="main_footer_data">{{item.COMMENT}}</div>
+          </div>
+        </div>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>

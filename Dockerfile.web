@@ -1,0 +1,10 @@
+FROM node:8.1.4
+
+COPY Basic/ /app
+COPY config.js /app/build-server/config.js
+
+EXPOSE 9000
+
+WORKDIR /app
+
+CMD ["node", "build-server/app.js"]

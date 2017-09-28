@@ -1,0 +1,33 @@
+<div style="padding: 0 30px">
+  <div class="dataExplore-header">
+    <span class="dataExplore-header-left">{{'web_common_020'| translate}} </span>
+    <span class="dataExplore-header-right">
+        <img src="./images/search.png" alt="搜索">
+        <input type="text" placeholder="{{'搜索数据字典'| translate}}">
+      </span>
+  </div>
+  <div class="dataExplore-container">
+        <div class="dataExplore-container-main" ng-repeat="item in datasets" >
+          <div class="date_set_main">
+            <div class="main_header_data">{{item['DID']}}</div>
+            <div class="main_container_data">
+              <div class="contentone">
+                {{item.Summary}}
+              </div>
+              <div class="contentone">
+                列 : {{item.ncols}}
+              </div>
+              <div class="contentone">
+                行 : {{item.nrows}}
+              </div>
+              <div class="contentone">
+                文件大小 : {{item.sizeb / 1024 | number: 2}} MB
+              </div>
+            </div>
+            <div class="main_footer_data">
+              <span>上次更新：{{(item['updatetime'] || item['createtime']) | date: 'short'}}</span>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>

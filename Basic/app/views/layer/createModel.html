@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <span class="modal-header-title">{{title | translate}}</span>
+  <span class="modal-header-close closeModelBtn" ng-click="cancel()"></span>
+</div>
+<div class="modal-body">
+  <div class="modal-body-title">{{'web_common_019'| translate}}{{content| translate}}</div>
+  <input class="modal-body-name" ng-model='model.name'>
+  <div class="modal-body-warning">{{model.nameTip}}</div>
+</div>
+<div class="modal-footer">
+  <button class="modal-footer-btn"
+        ng-click="create()"
+        ng-disabled="!(model.name !== undefined && model.name !== null)"
+        >
+    {{'web_common_015'| translate}}
+    </button>
+  <!--<span ng-if="!UISref" class="modal-footer-btn" ng-click="create()">{{'web_common_015'| translate}}</span>
+  <span ng-if="UISref" class="modal-footer-btn" ui-sref="{{url}}({mode: 'new', name: model.name})" ng-click="create()">{{'web_common_015'| translate}}</span>-->
+</div>
+

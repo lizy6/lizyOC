@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    image: aura/ui
+    depends_on:
+      - mysql
+      - notebook
+    links:
+      - mysql
+      - notebook
+    ports:
+      - 9000:9000
+    volumes:
+      - ./config.js:/app/build-server/config.js
+      - ./notebookModel:/app/notebookModel
+      - ./notebookApp:/app/notebookApp
+
+  notebook:
+    image: jupyter/all-spark-notebook:07292b8ebdd5
+    ports:
+      - 8888
+    volumes:
+      - ./notebookModel:/home/jovyan/work/notebookModel
+      - ./notebookApp:/home/jovyan/work/notebookApp
+      - ./jupyter_notebook_config.py:/jupyter_notebook_config.py
+    command: jupyter-notebook --NotebookApp.token='9e4f96c5239743a8dd5910216c6f02dad89a58932d63db7f' --config=/jupyter_notebook_config.py --no-browser
+  mysql:
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql
+    image: aura/mysql
+    ports:
+      - '3306:3306'
+    volumes:
+      - data-volume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: '1qaz@wsx'
+
+volumes:
+  data-volume:

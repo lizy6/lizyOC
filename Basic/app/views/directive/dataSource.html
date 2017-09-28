@@ -1,0 +1,23 @@
+<p class="title">{{ 'web_common_data_explore_004' | translate}}</p>
+<div class="dataSourceChoose">
+  <input type="radio" ng-model="bigData" value="iptOne" ng-value="1">
+  &nbsp;&nbsp;{{'web_common_data_explore_005' | translate}}
+  <select ng-disabled="bigData !==1" ng-model="cmdSource" class="data_select">
+    <option ng-repeat="option in cmdDataset track by $index" >{{option.datasetname}}</option>
+  </select>
+  &nbsp;&nbsp;{{'web_common_data_explore_005_02' | translate}}
+</div>
+<div class="dataFileImport">
+  <input type="radio" ng-model="bigData" value="iptTwo" ng-value="2" ng-checked="true">&nbsp;&nbsp;{{'web_common_data_explore_006' | translate}}
+  <div class="file_border">
+    <input type="file" ngf-select nv-file-select="" uploader="uploader" ng-model="file" class="chooseFile" ng-click="clearItems()" ng-disabled='bigData!==2'/>
+    <div ng-repeat="item in uploader.queue" style="line-height:30px;padding-left:4px;">
+      <p>{{item.file.name}}</p>
+    </div>
+  </div>
+  <button class="fileUpload" id='fileUpload' ng-click="upload()" ng-disabled="!file">{{'web_common_data_explore_007' | translate}}</button>
+</div>
+<div class="dataSourcePreview">
+  <button class="dataSource-preview" id="sourcePreview" ng-click="run(fileName)" ng-disabled='!unablePreview'>{{'web_common_data_explore_008' | translate}}</button>
+</div>
+<div ng-bind-html="result" class="previewResult" style="overflow:auto;"></div>

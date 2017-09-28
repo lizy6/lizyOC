@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <span class="modal-header-title"><span>{{appName}}/{{makeFileName}}</span></span>
+  <span class="modal-header-close closeModelBtn" ng-click="cancel()"></span>
+</div>
+<div class="modal-body">
+  <table style="width: 100%;margin: 0;padding: 0;">
+    <tr>
+      <td style="width: 50%;padding:0;margin: 0;">目标</td>
+      <td style="width: 50%;padding:0;margin: 0;">前置条件</td>
+    </tr>
+    <tr style="margin: 0;">
+      <td style="width: 50%;padding:0;margin: 0;">
+        <select class="create_select" name="repeatSelect" id="repeatSelect" ng-model="data.targetModel"
+                ng-change="makePrereqOptions(data.targetModel)">
+          <option ng-repeat="option in data.targetModelOptions" value="{{option}}">{{option}}</option>
+        </select>
+      </td>
+      <td style="width: 50%;padding:0;margin: 0;">
+        <div ng-repeat="listOptions in data.prereqModelOptions track by $index">
+          <span>{{$index + 1}}</span>
+          <select class="arr_select" ng-model="data.prereqModel[$index]">
+            <option ng-repeat="option in listOptions" value="{{option}}">{{option}}</option>
+          </select>
+          <span class="set_btn" ng-click="action($index)">
+            {{($index < data.prereqModelOptions.length -1) || (listOptions.length === 1 && $index === data.prereqModelOptions.length -1) ? 'x': '+'}}
+          </span>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="modal-footer">
+  <span class="modal-footer-btn" ng-click="save()">{{'web_common_015'| translate}}</span>
+</div>
+

@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <span style= "float:left;">{{'web_common_data_delete_layer_00'| translate}}</span>
+  <span class="modal-header-close closeModelBtn" ng-click="cancel()"></span>
+</div>
+<div class="modal-body">
+  <span ng-show = "isOwner"  style="font-size: 16px;margin-left: 40%;color: red;">{{'web_common_data_delete_layer_01'| translate}}</span>
+  <span ng-show = "!isOwner"  style="font-size: 16px;margin-left: 40%;color: red;"> No permission to delete!</span>
+</div>
+<div class="modal-footer">
+  <span class="modal-footer-btn" ng-click="cancel()">{{'web_common_data_delete_layer_03'| translate}}</span>
+  <span ng-show = "isOwner" class="modal-footer-btn" ng-click="ok()" style="margin-right: 10px">{{'web_common_data_delete_layer_02'| translate}}</span>
+</div>

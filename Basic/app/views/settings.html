@@ -1,0 +1,33 @@
+<div>
+    {{msg}}
+</div>
+
+<div class="row" ng-repeat="item in model.sourceCells track by $index" style="margin-top: 10px;">
+    <div class="col-lg-1">
+        <span style="font-size: large" class="pull-right">In [{{$index +1}}]:</span>
+    </div>
+    <div class="col-lg-11">
+        <textarea id="code" +$index ui-codemirror="cmOption" ng-model="model.sourceCells[$index]">
+      {{model.sourceCells[$index]}}
+    </textarea>
+    </div>
+</div>
+
+
+<section ng-controller="SettingsCtrl">
+    <textarea ui-codemirror="cmOption" ng-model="code">
+
+  </textarea> {{code}} Mode :
+    <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>
+</section>
+
+<div style="margin-top: 100px;background: #999">{{model.sourceCells[1]}}</div>
+
+
+<style>
+    .CodeMirror {
+        font-family: monospace;
+        height: 50px;
+        color: black;
+    }
+</style>

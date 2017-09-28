@@ -1,0 +1,17 @@
+<p class="title">{{appName}}</p>
+<div class="content" ng-class="{error:isError,waring:isWaring}">
+  <div class="contentTitle">
+    <span>模型介绍</span>
+    <span style="float:right;padding-right: 20px;color: blue;" ng-click="change()" ng-show="isShow">编辑</span>
+    <span style="float:right;padding-right: 20px;color: blue;" ng-click="save()" ng-show="!isShow">保存</span>
+  </div>
+  <div class="markdown" marked="markdown"></div>
+  <!--<div class="ower">-->
+    <!--<p class="owerOne">一级标题</p>-->
+    <!--<p class="owerTwo">二级标题</p>-->
+    <!--<p class="owerThr">三级标题</p>-->
+    <!--<p class="owerFour">四级标题</p>-->
+    <!--<p class="owerFive">文本文本文本</p>-->
+  <!--</div>-->
+</div>
+
